@@ -1,0 +1,45 @@
+.sv-explain {
+  background: var(--bs-tertiary-bg);
+  border-left: 4px solid var(--bs-primary);
+  border-radius: 6px;
+  padding: 0.75rem 1rem 0.25rem;
+  margin: 0.75rem 0 1rem;
+  max-width: 1000px;
+}
+
+.value-box .value-box-value { font-size: 2rem; }
+.value-box p { margin-bottom: 0; font-size: 0.85rem; }
+
+table.table { font-size: 0.85rem; }
+
+.sv-axes { color: var(--bs-body-color); line-height: 1.45; }
+.sv-axes strong { color: var(--bs-emphasis-color); }
+
+/* formula + plain-language reading */
+.sv-math {
+  background: var(--bs-body-bg);
+  border: 1px solid var(--bs-border-color);
+  border-radius: 6px;
+  padding: 0.25rem 1rem 0.6rem;
+  margin: 0.5rem 0 0.9rem;
+}
+.sv-formula { overflow-x: auto; }
+.sv-words { line-height: 1.5; }
+.sv-symbols {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--bs-secondary-color);
+}
+.sv-sym { display: inline-block; margin-right: 1.1rem; }
+.sv-deeper { margin: 0.25rem 0 0.9rem; }
+.sv-deeper summary {
+  cursor: pointer;
+  color: var(--bs-primary);
+  font-size: 0.9rem;
+}
+.sv-deeper > div {
+  border-left: 3px solid var(--bs-border-color);
+  padding: 0.25rem 0 0.25rem 1rem;
+  margin-top: 0.4rem;
+}
+.sv-explain .sv-math { margin-bottom: 0.75rem; }

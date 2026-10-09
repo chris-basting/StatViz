@@ -1,0 +1,10 @@
+name: statviz
+title: StatViz
+username: chris-basting
+account: chris-basting
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 18134365
+bundleId: 12666466
+url: https://chris-basting.shinyapps.io/statviz/
+version: 1
