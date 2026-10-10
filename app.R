@@ -25,7 +25,9 @@ pages <- list(
   list(id = "anova", label = "ANOVA", icon = "chart-column",
        blurb = "Compare several groups at once: between vs within variation, the F ratio, post-hoc tests and interactions."),
   list(id = "wilcox", label = "Wilcoxon & rank tests", icon = "arrow-up-1-9",
-       blurb = "Tests built on ranks: rank-sum, signed-rank and Kruskal-Wallis, and when they beat the t-test.")
+       blurb = "Tests built on ranks: rank-sum, signed-rank and Kruskal-Wallis, and when they beat the t-test."),
+  list(id = "metagenomics", label = "Metagenomics", icon = "dna",
+       blurb = "Sequencing whole microbial communities: reads and quality, alignment, assembly, binning, annotation and taxonomic profiling.")
 )
 
 home_card <- function(pg) {
@@ -73,7 +75,9 @@ ui <- page_navbar(
       do.call(layout_column_wrap, c(list(width = 1 / 2), lapply(pages[2:5], home_card))),
       h4(class = "mt-4", "Comparing groups"),
       p(class = "text-muted", "Suggested order: t-tests → ANOVA → Wilcoxon & rank tests."),
-      do.call(layout_column_wrap, c(list(width = 1 / 2), lapply(pages[6:8], home_card)))
+      do.call(layout_column_wrap, c(list(width = 1 / 2), lapply(pages[6:8], home_card))),
+      h4(class = "mt-4", "Bioinformatics"),
+      layout_column_wrap(width = 1 / 2, home_card(pages[[9]]))
     )
   ),
 
@@ -92,7 +96,9 @@ ui <- page_navbar(
     nav_panel("t-tests", value = "ttest", ttest_ui("ttest")),
     nav_panel("ANOVA", value = "anova", anova_ui("anova")),
     nav_panel("Wilcoxon & rank tests", value = "wilcox", wilcox_ui("wilcox"))
-  )
+  ),
+
+  nav_panel("Metagenomics", value = "metagenomics", icon = icon("dna"), metagenomics_ui("metagenomics"))
 )
 
 server <- function(input, output, session) {
@@ -105,6 +111,7 @@ server <- function(input, output, session) {
   ttest_server("ttest")
   anova_server("anova")
   wilcox_server("wilcox")
+  metagenomics_server("metagenomics")
 }
 
 shinyApp(ui, server)
