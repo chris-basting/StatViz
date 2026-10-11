@@ -5,6 +5,6 @@ account: chris-basting
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 18134365
-bundleId: 12671703
+bundleId: 12675098
 url: https://chris-basting.shinyapps.io/statviz/
 version: 1
