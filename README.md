@@ -46,13 +46,25 @@ how many PCs, interpreting loadings, reconstruction, 3-D, quiz.
   and shuffled null distributions, t-test vs Wilcoxon power under different noise shapes,
   signed-rank for paired data, Kruskal-Wallis, real data with both tests side by side.
 
-### Metagenomics
+### Bioinformatics (menu)
+
+#### Metagenomics
 The pipeline and shotgun coverage (Lander-Waterman), read quality and trimming (Phred scores),
 pairwise alignment by dynamic programming (global and local, with the full score table and
 traceback), de Bruijn graph assembly from simulated reads (k-mers, repeats, sequencing errors,
 N50), binning contigs into MAGs by GC content and coverage, annotation (ORF finding plus a toy
 homology search), and taxonomic profiling (k-mer classification, genome-size bias, diversity).
 The assembler, aligner and gene finder are small working implementations in base R.
+
+#### Over-representation analysis (ORA)
+The hypergeometric / Fisher's exact test with a live 2×2 table, multiple testing and
+Benjamini-Hochberg FDR (with known truth), pitfalls (choice of background, DE cut-off), and how to
+read an enrichment dot plot.
+
+#### Gene set enrichment analysis (GSEA)
+Ranking every gene, the running-sum enrichment score (walk it step by step; leading edge, weighting),
+permutation null distributions and NES, a head-to-head with ORA on broad-subtle vs sparse-strong
+pathways, and full results on the same simulated experiment as the ORA page.
 
 ## Layout
 
@@ -64,6 +76,7 @@ R/pca_helpers.R        # PCA math (by hand) + data generators
 R/regression_helpers.R # simulators + built-in datasets for the regression pages
 R/test_helpers.R       # simulators, datasets and null-distribution plots for the test pages
 R/metagenomics_helpers.R # toy sequence tools: translation, ORFs, alignment, de Bruijn assembly
+R/enrichment_helpers.R # simulated DE experiment, hypergeometric test, GSEA running sum + permutations
 R/mod_pca.R            # PCA module
 R/mod_linreg.R         # simple linear regression module
 R/mod_mlr.R            # multiple linear regression module
@@ -73,6 +86,8 @@ R/mod_ttest.R          # t-test module
 R/mod_anova.R          # ANOVA module
 R/mod_wilcox.R         # Wilcoxon / rank tests module
 R/mod_metagenomics.R   # metagenomics module
+R/mod_ora.R            # over-representation analysis module
+R/mod_gsea.R           # gene set enrichment analysis module
 www/styles.css
 www/rotate.js      # client-side Rotate/Pause animation
 ```

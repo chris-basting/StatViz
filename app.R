@@ -27,7 +27,11 @@ pages <- list(
   list(id = "wilcox", label = "Wilcoxon & rank tests", icon = "arrow-up-1-9",
        blurb = "Tests built on ranks: rank-sum, signed-rank and Kruskal-Wallis, and when they beat the t-test."),
   list(id = "metagenomics", label = "Metagenomics", icon = "dna",
-       blurb = "Sequencing whole microbial communities: reads and quality, alignment, assembly, binning, annotation and taxonomic profiling.")
+       blurb = "Sequencing whole microbial communities: reads and quality, alignment, assembly, binning, annotation and taxonomic profiling."),
+  list(id = "ora", label = "Over-representation analysis (ORA)", icon = "filter",
+       blurb = "Is a pathway over-represented in your list of differentially expressed genes? The hypergeometric test, FDR and common pitfalls."),
+  list(id = "gsea", label = "Gene set enrichment analysis (GSEA)", icon = "ranking-star",
+       blurb = "Pathway analysis without a cut-off: ranked gene lists, the running enrichment score, permutations and NES.")
 )
 
 home_card <- function(pg) {
@@ -77,7 +81,8 @@ ui <- page_navbar(
       p(class = "text-muted", "Suggested order: t-tests → ANOVA → Wilcoxon & rank tests."),
       do.call(layout_column_wrap, c(list(width = 1 / 2), lapply(pages[6:8], home_card))),
       h4(class = "mt-4", "Bioinformatics"),
-      layout_column_wrap(width = 1 / 2, home_card(pages[[9]]))
+      p(class = "text-muted", "ORA and GSEA share one simulated experiment, so their results can be compared directly."),
+      do.call(layout_column_wrap, c(list(width = 1 / 2), lapply(pages[9:11], home_card)))
     )
   ),
 
@@ -98,7 +103,12 @@ ui <- page_navbar(
     nav_panel("Wilcoxon & rank tests", value = "wilcox", wilcox_ui("wilcox"))
   ),
 
-  nav_panel("Metagenomics", value = "metagenomics", icon = icon("dna"), metagenomics_ui("metagenomics"))
+  nav_menu(
+    "Bioinformatics", icon = icon("dna"),
+    nav_panel("Metagenomics", value = "metagenomics", metagenomics_ui("metagenomics")),
+    nav_panel("Over-representation analysis (ORA)", value = "ora", ora_ui("ora")),
+    nav_panel("Gene set enrichment analysis (GSEA)", value = "gsea", gsea_ui("gsea"))
+  )
 )
 
 server <- function(input, output, session) {
@@ -112,6 +122,8 @@ server <- function(input, output, session) {
   anova_server("anova")
   wilcox_server("wilcox")
   metagenomics_server("metagenomics")
+  ora_server("ora")
+  gsea_server("gsea")
 }
 
 shinyApp(ui, server)
