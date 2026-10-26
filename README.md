@@ -94,3 +94,7 @@ www/rotate.js      # client-side Rotate/Pause animation
 
 To add a method, create `R/mod_<method>.R` with `<method>_ui()` / `<method>_server()`
 and add it to `pages` and the navbar in `app.R`.
+
+## License
+
+MIT. See [LICENSE](LICENSE). Built-in example datasets come from R and its packages (datasets, MASS, lme4) under their own licenses.
